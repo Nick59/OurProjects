@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_layout_file>
+	<ActiveTarget name="Debug" />
+	<File name="gestionFichiers.c" open="1" top="0" tabpos="6">
+		<Cursor position="1336" topLine="46" />
+	</File>
+	<File name="gestionFichiers.h" open="1" top="0" tabpos="7">
+		<Cursor position="105" topLine="0" />
+	</File>
+	<File name="globals.h" open="0" top="0" tabpos="4">
+		<Cursor position="329" topLine="0" />
+	</File>
+	<File name="ia.c" open="1" top="0" tabpos="11">
+		<Cursor position="2055" topLine="68" />
+	</File>
+	<File name="ia.h" open="1" top="0" tabpos="12">
+		<Cursor position="169" topLine="0" />
+	</File>
+	<File name="jeu.c" open="1" top="0" tabpos="10">
+		<Cursor position="512" topLine="160" />
+	</File>
+	<File name="jeu.h" open="1" top="0" tabpos="13">
+		<Cursor position="192" topLine="0" />
+	</File>
+	<File name="joueur.c" open="1" top="0" tabpos="3">
+		<Cursor position="630" topLine="0" />
+	</File>
+	<File name="joueur.h" open="1" top="0" tabpos="2">
+		<Cursor position="221" topLine="0" />
+	</File>
+	<File name="main.c" open="1" top="0" tabpos="1">
+		<Cursor position="175" topLine="0" />
+	</File>
+	<File name="menu.c" open="1" top="0" tabpos="8">
+		<Cursor position="878" topLine="1" />
+	</File>
+	<File name="menu.h" open="1" top="0" tabpos="9">
+		<Cursor position="72" topLine="0" />
+	</File>
+	<File name="plateau.c" open="0" top="0" tabpos="6">
+		<Cursor position="581" topLine="20" />
+	</File>
+	<File name="plateau.h" open="0" top="0" tabpos="5">
+		<Cursor position="250" topLine="0" />
+	</File>
+	<File name="regles.c" open="1" top="0" tabpos="4">
+		<Cursor position="2277" topLine="55" />
+	</File>
+	<File name="regles.h" open="1" top="0" tabpos="5">
+		<Cursor position="410" topLine="0" />
+	</File>
+	<File name="reseau.c" open="1" top="1" tabpos="14">
+		<Cursor position="1928" topLine="45" />
+	</File>
+	<File name="reseau.h" open="0" top="0" tabpos="16">
+		<Cursor position="0" topLine="0" />
+	</File>
+</CodeBlocks_layout_file>
