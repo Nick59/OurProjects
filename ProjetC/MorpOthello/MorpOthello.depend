@@ -34,7 +34,7 @@
 
 1297865762 /home/infoetu/delannon/S4Project/MorpOthello/joueur.h
 
-1299072787 /home/infoetu/delannon/S4Project/MorpOthello/globals.h
+1300290396 /home/infoetu/delannon/S4Project/MorpOthello/globals.h
 	"regles.h"
 	"joueur.h"
 	"plateau.h"
@@ -42,6 +42,7 @@
 	"menu.h"
 	"jeu.h"
 	"ia.h"
+	"reseau.h"
 
 1296058634 /home/infoetu/delannon/S4Project/MorpOthello/plateau.h
 
@@ -56,9 +57,9 @@
 	<stdio.h>
 	<string.h>
 
-1296124018 /home/infoetu/delannon/S4Project/MorpOthello/regles.h
+1300281470 /home/infoetu/delannon/S4Project/MorpOthello/regles.h
 
-1296655664 source:/home/infoetu/delannon/S4Project/MorpOthello/regles.c
+1300281895 source:/home/infoetu/delannon/S4Project/MorpOthello/regles.c
 	"regles.h"
 	"globals.h"
 	<stdio.h>
@@ -82,7 +83,7 @@
 	"jeu.h"
 	"ia.h"
 
-1296124018 /home/infoetu/sevinl/Bureau/Projet/MorpOthello/regles.h
+1300281470 /home/infoetu/sevinl/Bureau/Projet/MorpOthello/regles.h
 
 1296058634 /home/infoetu/sevinl/Bureau/Projet/MorpOthello/plateau.h
 
@@ -97,7 +98,7 @@
 	<stdio.h>
 	<string.h>
 
-1296655664 source:/home/infoetu/sevinl/Bureau/Projet/MorpOthello/regles.c
+1300281895 source:/home/infoetu/sevinl/Bureau/Projet/MorpOthello/regles.c
 	"regles.h"
 	"globals.h"
 	<stdio.h>
@@ -119,16 +120,16 @@
 	<string.h>
 	"globals.h"
 
-1299074682 /home/infoetu/sevinl/Bureau/Projet/MorpOthello/jeu.h
+1299680447 /home/infoetu/sevinl/Bureau/Projet/MorpOthello/jeu.h
 
-1299079208 source:/home/infoetu/sevinl/Bureau/Projet/MorpOthello/jeu.c
+1300281557 source:/home/infoetu/sevinl/Bureau/Projet/MorpOthello/jeu.c
 	"globals.h"
 	"jeu.h"
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 
-1299080989 source:/home/infoetu/sevinl/Bureau/Projet/MorpOthello/reseau.c
+1300283583 source:/home/infoetu/sevinl/Bureau/Projet/MorpOthello/reseau.c
 	<sys/types.h>
 	<sys/socket.h>
 	<netinet/in.h>
@@ -137,12 +138,12 @@
 	<netdb.h>
 	"globals.h"
 
-1299078845 source:/home/infoetu/sevinl/Bureau/Projet/MorpOthello/ia.c
+1300283164 source:/home/infoetu/sevinl/Bureau/Projet/MorpOthello/ia.c
 	<stdlib.h>
 	<stdio.h>
 	"globals.h"
 
-1299074115 /home/infoetu/sevinl/Bureau/Projet/MorpOthello/ia.h
+1300280644 /home/infoetu/sevinl/Bureau/Projet/MorpOthello/ia.h
 
 1297869806 source:/home/infoetu/delannon/S4Project/MorpOthello/gestionFichiers.c
 	<stdio.h>
@@ -155,28 +156,30 @@
 
 1297258278 /home/infoetu/delannon/S4Project/MorpOthello/menu.h
 
-1299074682 /home/infoetu/delannon/S4Project/MorpOthello/jeu.h
+1299680447 /home/infoetu/delannon/S4Project/MorpOthello/jeu.h
 
-1299074115 /home/infoetu/delannon/S4Project/MorpOthello/ia.h
+1300280644 /home/infoetu/delannon/S4Project/MorpOthello/ia.h
 
-1299683336 source:/home/infoetu/delannon/S4Project/MorpOthello/ia.c
+1300286335 /home/infoetu/delannon/S4Project/MorpOthello/reseau.h
+
+1300286052 source:/home/infoetu/delannon/S4Project/MorpOthello/ia.c
 	<stdlib.h>
 	<stdio.h>
 	"globals.h"
 
-1299681751 source:/home/infoetu/delannon/S4Project/MorpOthello/jeu.c
+1299071674 source:/home/infoetu/delannon/S4Project/MorpOthello/menu.c
+	<stdio.h>
+	<string.h>
+	"globals.h"
+
+1300291406 source:/home/infoetu/delannon/S4Project/MorpOthello/jeu.c
 	"globals.h"
 	"jeu.h"
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 
-1299683722 source:/home/infoetu/delannon/S4Project/MorpOthello/menu.c
-	<stdio.h>
-	<string.h>
-	"globals.h"
-
-1299687266 source:/home/infoetu/delannon/S4Project/MorpOthello/reseau.c
+1300291906 source:/home/infoetu/delannon/S4Project/MorpOthello/reseau.c
 	<sys/types.h>
 	<sys/socket.h>
 	<netinet/in.h>
@@ -184,84 +187,5 @@
 	<unistd.h>
 	<netdb.h>
 	"globals.h"
-
-1297869806 source:/home/nick/MorpOthello/ProjetC/MorpOthello/gestionFichiers.c
-	<stdio.h>
-	<stdlib.h>
-	<string.h>
-	"globals.h"
-	<unistd.h>
-
-1299072786 /home/nick/MorpOthello/ProjetC/MorpOthello/globals.h
-	"regles.h"
-	"joueur.h"
-	"plateau.h"
-	"gestionFichiers.h"
-	"menu.h"
-	"jeu.h"
-	"ia.h"
-
-1296124018 /home/nick/MorpOthello/ProjetC/MorpOthello/regles.h
-
-1297865762 /home/nick/MorpOthello/ProjetC/MorpOthello/joueur.h
-
-1296058634 /home/nick/MorpOthello/ProjetC/MorpOthello/plateau.h
-
-1297861584 /home/nick/MorpOthello/ProjetC/MorpOthello/gestionFichiers.h
-
-1297258278 /home/nick/MorpOthello/ProjetC/MorpOthello/menu.h
-
-1299074682 /home/nick/MorpOthello/ProjetC/MorpOthello/jeu.h
-
-1299074114 /home/nick/MorpOthello/ProjetC/MorpOthello/ia.h
-
-1299683336 source:/home/nick/MorpOthello/ProjetC/MorpOthello/ia.c
-	<stdlib.h>
-	<stdio.h>
-	"globals.h"
-
-1299681750 source:/home/nick/MorpOthello/ProjetC/MorpOthello/jeu.c
-	"globals.h"
-	"jeu.h"
-	<stdio.h>
-	<stdlib.h>
-	<string.h>
-
-1297870030 source:/home/nick/MorpOthello/ProjetC/MorpOthello/joueur.c
-	"joueur.h"
-	<stdio.h>
-	<stdlib.h>
-	<string.h>
-	"globals.h"
-
-1299079718 source:/home/nick/MorpOthello/ProjetC/MorpOthello/main.c
-	<stdio.h>
-	<string.h>
-	"globals.h"
-	<unistd.h>
-
-1299683722 source:/home/nick/MorpOthello/ProjetC/MorpOthello/menu.c
-	<stdio.h>
-	<string.h>
-	"globals.h"
-
-1296653310 source:/home/nick/MorpOthello/ProjetC/MorpOthello/plateau.c
-	"plateau.h"
-	<stdio.h>
-	<string.h>
-
-1296655664 source:/home/nick/MorpOthello/ProjetC/MorpOthello/regles.c
-	"regles.h"
-	"globals.h"
-	<stdio.h>
-	<stdlib.h>
-
-1300214799 source:/home/nick/MorpOthello/ProjetC/MorpOthello/reseau.c
-	<sys/types.h>
-	<sys/socket.h>
-	<netinet/in.h>
-	<arpa/inet.h>
-	<unistd.h>
-	<netdb.h>
-	"globals.h"
+	"reseau.h"
 

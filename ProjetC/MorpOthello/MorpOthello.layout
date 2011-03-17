@@ -2,34 +2,34 @@
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Debug" />
 	<File name="gestionFichiers.c" open="1" top="0" tabpos="6">
-		<Cursor position="1336" topLine="46" />
+		<Cursor position="1336" topLine="37" />
 	</File>
 	<File name="gestionFichiers.h" open="1" top="0" tabpos="7">
 		<Cursor position="105" topLine="0" />
 	</File>
-	<File name="globals.h" open="0" top="0" tabpos="4">
-		<Cursor position="329" topLine="0" />
+	<File name="globals.h" open="1" top="0" tabpos="15">
+		<Cursor position="501" topLine="0" />
 	</File>
 	<File name="ia.c" open="1" top="0" tabpos="11">
-		<Cursor position="2055" topLine="68" />
+		<Cursor position="4571" topLine="163" />
 	</File>
 	<File name="ia.h" open="1" top="0" tabpos="12">
-		<Cursor position="169" topLine="0" />
+		<Cursor position="210" topLine="0" />
 	</File>
 	<File name="jeu.c" open="1" top="0" tabpos="10">
-		<Cursor position="512" topLine="160" />
+		<Cursor position="2104" topLine="55" />
 	</File>
 	<File name="jeu.h" open="1" top="0" tabpos="13">
 		<Cursor position="192" topLine="0" />
 	</File>
 	<File name="joueur.c" open="1" top="0" tabpos="3">
-		<Cursor position="630" topLine="0" />
+		<Cursor position="630" topLine="26" />
 	</File>
 	<File name="joueur.h" open="1" top="0" tabpos="2">
 		<Cursor position="221" topLine="0" />
 	</File>
 	<File name="main.c" open="1" top="0" tabpos="1">
-		<Cursor position="175" topLine="0" />
+		<Cursor position="200" topLine="0" />
 	</File>
 	<File name="menu.c" open="1" top="0" tabpos="8">
 		<Cursor position="878" topLine="1" />
@@ -44,15 +44,15 @@
 		<Cursor position="250" topLine="0" />
 	</File>
 	<File name="regles.c" open="1" top="0" tabpos="4">
-		<Cursor position="2277" topLine="55" />
+		<Cursor position="2594" topLine="57" />
 	</File>
 	<File name="regles.h" open="1" top="0" tabpos="5">
-		<Cursor position="410" topLine="0" />
+		<Cursor position="449" topLine="0" />
 	</File>
 	<File name="reseau.c" open="1" top="1" tabpos="14">
-		<Cursor position="1928" topLine="45" />
+		<Cursor position="2991" topLine="74" />
 	</File>
-	<File name="reseau.h" open="0" top="0" tabpos="16">
-		<Cursor position="0" topLine="0" />
+	<File name="reseau.h" open="1" top="0" tabpos="16">
+		<Cursor position="54" topLine="0" />
 	</File>
 </CodeBlocks_layout_file>

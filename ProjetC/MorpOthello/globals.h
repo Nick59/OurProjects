@@ -15,10 +15,14 @@
 #include "menu.h"
 #include "jeu.h"
 #include "ia.h"
+#include "reseau.h"
 
 extern Joueur jo1;
 extern Joueur jo2;
 extern Joueur joueurCourant;
 extern Plateau p;
+extern int typegame;
+extern SOCKET csock;
+extern SOCKET sock;
 
 #endif

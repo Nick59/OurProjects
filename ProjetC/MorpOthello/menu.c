@@ -22,7 +22,7 @@ int choisirOption(){
     int fin=0;
     while(!fin){
         scanf("%d",&choix);
-        if(choix<1 || choix>7){ fin = 0; printf("Erreur, reessayez lol\n"); }
+        if(choix<1 || choix>7){ fin = 0; printf("Erreur, reessayez\n"); }
 
         else fin = 1;
     }

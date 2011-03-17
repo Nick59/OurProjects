@@ -8,10 +8,14 @@
 #define SOCKET_ERROR -1
 #define closesocket(s) close(s)
 #include "globals.h"
-typedef int SOCKET;
+#include "reseau.h"
 typedef struct sockaddr_in SOCKADDR_IN;
 typedef struct sockaddr SOCKADDR;
 typedef struct in_addr IN_ADDR;
+int typegame = 0;
+SOCKET csock;
+SOCKET sock;
+
 
 /* Ceci est la partie serveur */
 
@@ -19,11 +23,11 @@ void serverSide(){
     printf("Serveur créé, en attente de l'adversaire...\n");
      /* Socket et contexte d'adressage du serveur */
     SOCKADDR_IN sin;
-    SOCKET sock;
+    /*SOCKET sock;*/
 
     /* Socket et contexte d'adressage du client */
     SOCKADDR_IN csin;
-    SOCKET csock;
+    /*SOCKET csock;*/
     socklen_t crecsize = sizeof(csin);
 
 
@@ -34,7 +38,7 @@ void serverSide(){
     /*on assigne le port d'ecoute*/
     sin.sin_addr.s_addr = htonl(INADDR_ANY);
     sin.sin_family = AF_INET;
-    sin.sin_port = htons(9877);
+    sin.sin_port = htons(9875);
 
     /*association les infos a la socket*/
     bind(sock, (SOCKADDR*)&sin, sizeof(sin));
@@ -62,16 +66,16 @@ void clientSide(){
     ip = (char*) malloc(sizeof(char)*len);
     strncpy(ip,choixip,len);
     printf("%s\n",ip);
-    SOCKET sock;
+    /*SOCKET sock;*/
     SOCKADDR_IN sin;
 
      /* Création de la socket */
-    sock = socket(AF_INET, SOCK_STREAM, 0);
+    SOCKET sock = socket(AF_INET, SOCK_STREAM, 0);
 
     /* Configuration de la connexion */
     sin.sin_addr.s_addr = inet_addr(ip);
     sin.sin_family = AF_INET;
-    sin.sin_port = htons(9877);
+    sin.sin_port = htons(9875);
 
     if(connect(sock, (SOCKADDR*)&sin, sizeof(sin)) != SOCKET_ERROR){
         printf("Client connecté, yeah man !\n");
@@ -85,6 +89,7 @@ void clientSide(){
 }
 
 void playServer(SOCKET csock){
+    typegame = 2;
     char j1[256];
     char j2[256];
     printf("Bienvenue, joueur 1 entrez votre nom\n");
@@ -106,9 +111,12 @@ void playServer(SOCKET csock){
     send(csock,&jo2,sizeof(jo2),0);
     printf("Fin d'envoie des données.\n");
 
+    /* Le jeu commence */
+    partie(0);
 }
 
-void playClient(SOCKET sock){
+void playClient(){
+    typegame = 1;
     char buffer[256];
     char j2[256];
     printf("Le joueur 1 saisie sont nom.. Wait please\n");
@@ -118,11 +126,11 @@ void playClient(SOCKET sock){
     scanf("%s",j2);
     send(sock,j2,256,0);
     /*init du plateau et des joueurs */
-
     recv(sock,&p,sizeof(p),0);
-
     recv(sock,&jo1,sizeof(jo1),0);
-
     recv(sock,&jo2,sizeof(jo2),0);
-    printf("%s + %s",jo1.name,jo2.name);
+
+    /* le jeu commence */
+    partie(0);
+
 }

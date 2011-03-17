@@ -12,27 +12,26 @@ void affectJoueur(Joueur b){
 
 
 /* Permet de saisir un pion dans la grille */
-/* Renvoie 1 si le joueur courant a gagne */
-int saisie(){
-    int x = -1;
-    int y = -1;
+/* Place les coordonnees dans les pointeurs x et y*/
+int saisie(int *x, int *y){
     int end = 1 ;
+    int a,b;
+    a = b = -1;
     while(end){
-
         printf("Saisir la ligne\n");
-        scanf("%d", &x);
+        scanf("%d", x);
         printf("Saisir la colonne\n");
-        scanf("%d", &y);
+        scanf("%d", y);
         fflush(stdin);
-        if(coupValide(x,y)){
-            affect(x,y,joueurCourant.couleur);
-            convertir(x,y);
+        if(coupValide(*x,*y)){
+            affect(*x,*y,joueurCourant.couleur);
+            convertir(*x,*y);
             end = 0;
         }else{
             printf("Coordonnées Fausses\n");
         }
     }
-    if(win(x,y)){
+    if(win(*x,*y,&a,&b)==1){
         return 1;
     }
     return 0;
@@ -48,12 +47,59 @@ void switchJoueur(){
 
 /* Cette fonction représente une manche, elle renvoie 1 si le joueur 1 gagne, sinon 2 */
 int manche(){
+    int *x=malloc(sizeof(int));
+    int *y=malloc(sizeof(int));
+    *x=0;
+    *y=0;
     int isWinner = 0;
-    initPlateau();
+    if( typegame ==0 ){
+        initPlateau();
+    }
     while(!isWinner){
-        switchJoueur();
-        printf("Joueur %s, A vous !\n",joueurCourant.name);
-        isWinner=saisie();
+        /*jeu local */
+        if(typegame == 0){
+            switchJoueur();
+            printf("Joueur %s, A vous !\n",joueurCourant.name);
+            isWinner=saisie(x,y);
+        /* jeu en mode Client */
+        }else{
+            if(typegame ==2){
+                printf("Le joueur %s, A vous !\n",jo1.name);
+                int i = 100;
+                send(csock,i,sizeof(int),0);
+                isWinner=saisie(x,y);
+                /* envoi des coordonnees */
+                send(csock,x,sizeof(x),0);
+                send(csock,y,sizeof(y),0);
+                /* reception des coordonnes du Jo2 */
+                printf("Le joueur %s est en train de jouer.. WAIT PLZ !\n",jo2.name);
+                recv(csock,x,sizeof(int),0);
+                recv(csock,y,sizeof(int),0);
+                affect(x,y,jo2.couleur);
+                printf("Le joueur %s a joué en %d:%d !\n",jo2.name,x,y);
+            }else if(typegame ==1){
+                int i=0;
+                recv(sock,i,sizeof(int),0);
+                while(i != 100 || i == -1){
+                   i=recv(sock,i,sizeof(int),0);
+                    printf("%d",i);
+                }
+
+                printf("Le joueur %s est en train de jouer.. WAIT PLZ !\n",jo1.name);
+                printf("je plante\n");
+                recv(sock,x,sizeof(int),0);
+                recv(sock,y,sizeof(int),0);
+                printf("je plante plus %d:%d \n",x,y );
+                affect(x,y,jo1.couleur);
+                printf("et La ?\n");
+                printf("Le joueur %s a joué en %d:%d !\n",jo1.name,x,y);
+                printf("Le joueur %s, A vous !\n",jo2.name);
+                isWinner=saisie(x,y);
+                /* envoi des coordonnees */
+                send(sock,x,sizeof(x),0);
+                send(sock,y,sizeof(y),0);
+            }
+        }
         affichage();
     }
     printf("%s a gagné la manche ;)\n",joueurCourant.name);
@@ -89,7 +135,7 @@ void debutPartie(){
 /* tournoi : si 0 pas tournoi si 1 tournoi */
 Joueur partie(int tournoi){
     char choix[5];
-    if(!tournoi){
+    if(!tournoi && typegame == 0){
         debutPartie();
     }
     int numManche=jo1.score+jo2.score;
@@ -135,16 +181,16 @@ void tournoi(){
     Joueur winner1,winner2,winner;
     int i=1;
     char noms[4][256];
-    printf("Le tournoi va bientôt commencer, ready, set, GO !\n");
+    printf("Le tournoi va bientôt commencer !\n");
     for(i=0;i<4;i++){
-        printf("Joueur %d, saisi ton nom s'il te plait!\n",i+1);
+        printf("Joueur %d, saisi ton nom !\n",i+1);
         scanf("%s",&noms[i]);
     }
     init2Joueur(noms[0],noms[1],1);
     printf("%s et %s, ca va être à vous !\n",jo1.name,jo2.name);
     winner1=partie(1);
     init2Joueur(noms[2],noms[3],1);
-    printf("%s et %s, ca va être à vous et non c'était une blague \o/!\n",jo1.name,jo2.name);
+    printf("%s et %s, ca va être à vous !\n",jo1.name,jo2.name);
     winner2=partie(1);
     init2Joueur(winner1.name,winner2.name,1);
     printf("%s et %s sont en finale, preparez vous... \n",jo1.name,jo2.name);
@@ -188,20 +234,4 @@ void lancerMenu(){
                printf("Erreur, reessayez\n");
                break;
         }
-}
-
-void getInfo(int i){
-    switch(i){
-        case 1:
-            printf("Manche %d !\n",numManche);
-            break;
-        case 2:
-
-
-
-
-    }
-
-
-
 }

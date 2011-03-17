@@ -54,8 +54,10 @@ int changerCouleur(int i, int j, int ivoisin, int jvoisin, char couleur, char ad
         }
 }
 /* Cette fonction retourne 1 si le joueur courant gagne*/
+/* Sinon, les autres nombres correspondent au nombre de pions alignés (2,3,4) */
 /* i et j sont les coordonnees du dernier coup joue*/
-int win(int i, int j){
+/* x et y sont des pointeurs vers la fin de l'alignement*/
+int win(int i, int j, int *x, int *y){
     int ivoisin=0;
     int jvoisin=0;
     char couleur=p.grille[i][j];
@@ -68,8 +70,17 @@ int win(int i, int j){
                             if(getCase(i+(4*ivoisin),j+(4*jvoisin))==couleur){
                                 return 1;
                             }
+                            *x=i+(3*ivoisin);
+                            *y=j+(3*ivoisin);
+                            return 4;
                         }
+                        *x=i+(2*ivoisin);
+                        *y=j+(2*ivoisin);
+                        return 3;
                     }
+                    *x=i+(1*ivoisin);
+                    *y=j+(1*ivoisin);
+                    return 2;
                 }
             }
         }
