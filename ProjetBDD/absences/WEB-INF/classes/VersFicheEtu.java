@@ -26,11 +26,13 @@ public class VersFicheEtu extends HttpServlet{
 		}
 		/* Connexion à la BDD */
 		try{
+			//Difinition du nom de l'etudiant dont on veux voir la fiche individuel
 			session.putValue("nomEtu",req.getParameter("nomEtu"));
 			res.sendRedirect("FicheEtu");
 		}
 		catch(Exception e){
-			out.println("Erreur co' BDD"+e.getMessage());
+			out.println("<p>Erreur base de données </p>");
+			out.println(e.getMessage());
 		}
 	}
 }

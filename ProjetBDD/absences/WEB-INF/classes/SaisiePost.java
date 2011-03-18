@@ -43,12 +43,13 @@ public class SaisiePost extends HttpServlet{
 			if(rs.getInt(1) == 1){
 				
 				if(matcher.find()){
-					int result = stmt.executeUpdate("INSERT INTO absences VALUES('"+req.getParameter("login")+"', "+req.getParameter("matiere")+",'non','"+req.getParameter("dateAbsence")+"')");
+					//Insert une absence dans la base de données.
+					int result = stmt.executeUpdate("INSERT INTO absences VALUES('"+req.getParameter("login")+"', "+req.getParameter("matiere")+",'Non','"+req.getParameter("dateAbsence")+"')");
 					if(result != 0){
 						//vers l'accueil
-						res.sendRedirect("Accueil?message=L'absence%20a%20été%20ajouté");
+						res.sendRedirect("Accueil?message=L'absence%20a%20été%20ajoutée");
 					}else{
-						//vers le formulaire d'ajout d'absence
+						//vers le formulaire d'ajout d'absence avec un message d'erreur
 						res.sendRedirect("Saisie?message=Erreur%20Base%20de%20données,%20contactez%20votre%20administrateur");
 					}
 				}
@@ -61,7 +62,8 @@ public class SaisiePost extends HttpServlet{
 			
 		}
 		catch(Exception e){
-			out.println("Erreur co' BDD"+e.getMessage());
+			out.println("<p>Erreur base de données </p>");
+			out.println(e.getMessage());
 		}
 	}
 }

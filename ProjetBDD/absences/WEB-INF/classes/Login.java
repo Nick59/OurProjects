@@ -23,8 +23,10 @@ public class Login extends HttpServlet{
 			Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
 			Connection con = DriverManager.getConnection(url,nom,mdp);
 			Statement stmt = con.createStatement();
+			//Recuperation de l'utilisateur pour verifier son pseudo et son mot de passe
 			ResultSet rs = stmt.executeQuery("SELECT * FROM utilisateurs WHERE login='"+logine+"'");
 			if(rs.next()){
+				//comparaison des 2 mdp
 				if(rs.getString("password").equals(passworde)){
 					session.putValue("login",logine);
 					con.close();
@@ -40,6 +42,7 @@ public class Login extends HttpServlet{
 		}
 		catch(Exception e){
 			out.println("Erreur connexion base de données");
+			out.println(e.getMessage());
 		}
 		
 		

@@ -15,7 +15,7 @@ public class JustiPost extends HttpServlet{
 	public Matcher matcher2;
 
 	public void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException{
-	
+		
 		PrintWriter out = res.getWriter();
 		res.setContentType("text/html");
 		HttpSession session=req.getSession(true);
@@ -30,7 +30,7 @@ public class JustiPost extends HttpServlet{
 		if(session.getAttribute("login")==null || session.getAttribute("login").equals("")){
 			res.sendRedirect("../index.html");
 		}
-		pattern = Pattern.compile("^\\d{4}/\\d{2}/\\d{2}$");
+		pattern = Pattern.compile("^\\d{2}/\\d{2}/\\d{4}$");
 		matcher = pattern.matcher(req.getParameter("d1"));
 		matcher2= pattern.matcher(req.getParameter("d2"));
 		/* Connexion à la BDD */
@@ -45,18 +45,14 @@ public class JustiPost extends HttpServlet{
 			if(rs.getInt(1) == 1){
 				
 				if(matcher.find() && matcher2.find()){
-				/*	Nico du passé : Bah faudra faire la verification de la requete SQL et puiiiis c'est tout.
-				
-					Léo du passé : Ouais ! je t'aime Léo du futur ! Pardonne moi !!!
-				
-				*/
-					int result = stmt.executeUpdate("UPDATE absences SET justification='"+req.getParameter("justificatif")+"' WHERE dateAbs>="+req.getParameter("d1")+" AND dateAbs<="+req.getParameter("d2"));
+					String update="UPDATE absences SET justification='"+req.getParameter("justificatif")+"' WHERE justification='Non' AND etudiant='"+req.getParameter("login")+"' AND dateAbs>=#"+req.getParameter("d1")+"# AND dateAbs<=#"+req.getParameter("d2")+"#";
+					int result = stmt.executeUpdate(update);
 					if(result != 0){
 						//vers l'accueil
 						res.sendRedirect("Accueil?message=Justification%20validée");
 					}else{
-						//vers le formulaire de justification
-						res.sendRedirect("Justification?message=Erreur%20Base%20de%20données,%20contactez%20votre%20administrateur");
+						//vers le formulaire de justification avec un message d'erreur
+						res.sendRedirect("Justification?message=Erreur%20Base%20de%20données,%20contactez%20votre%20administrateur%20"+update);
 					}
 				}
 				else{
@@ -65,14 +61,15 @@ public class JustiPost extends HttpServlet{
 			
 			}
 			else{
-						//vers le formulaire de justification
-						res.sendRedirect("Justification?message=Erreur%20Base%20de%20données,%20contactez%20votre%20administrateur");
+				//vers le formulaire de justification
+				res.sendRedirect("Justification?message=Erreur%20Base%20de%20données,%20contactez%20votre%20administrateur");
 			}
 			
 			
 		}
 		catch(Exception e){
-			out.println("Erreur co' BDD"+e.getMessage());
+			out.println("<p>Erreur base de données </p>");
+			out.println(e.getMessage());
 		}
 	}
 }

@@ -30,6 +30,7 @@ public class Saisie extends HttpServlet{
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery("SELECT * FROM cours");
 			out.println("<h1> Saisie d'une absence </h1>");
+			//Message d'erreur
 			if(req.getParameter("message") != null){
 				out.println("<p>"+req.getParameter("message")+"</p>");
 			}
@@ -44,16 +45,18 @@ public class Saisie extends HttpServlet{
 			}
 			out.println("</select>");
 			out.println("</p>");
+			//Fomulaire de saisie d'absence
 			out.println("<p><label> Etudiant : </label><input type=\"text\" name=\"login\" /></p>");
 			out.println("<p><label> Date (format AAAA/MM/JJ) : </label><input type=\"text\" name=\"dateAbsence\"/></p>");
 			out.println("<p><input type=\"submit\"/></p>");
 			out.println("</form><br/>");
 			out.println("<p><a href=\"Accueil\">Retour à l'accueil</a></p>");
-			out.println("<p><a href=\"../index.html\">Se déconnecter</a></p>");
+			out.println("<p><a href=\"LogOut\">Se déconnecter</a></p>");
 			
 		}
 		catch(Exception e){
-			out.println("Erreur co' BDD"+e.getMessage());
+			out.println("<p>Erreur base de données </p>");
+			out.println(e.getMessage());
 		}
 	}
 }

@@ -27,13 +27,15 @@ public class ListeEtu extends HttpServlet{
 			Connection con = DriverManager.getConnection(url,nom,mdp);
 			
 			Statement stmt = con.createStatement();
+			//recuperation des etudiants trier par nombre d'absence
 			ResultSet etudiants = stmt.executeQuery("SELECT absences.etudiant, count(absences.etudiant) AS NombreAbsences FROM absences GROUP BY absences.etudiant ORDER BY count(absences.etudiant) DESC ");
 			out.println("<table>");
 			out.println("<tr>");
 			out.println("<th> Nom de l'étudiant </th>");
 			out.println("<th> Nombre d'absences </th>");
 			out.println("</tr>");
-				String nomEtu;
+			String nomEtu;
+			//Affichage
 			while(etudiants.next()){
 				nomEtu=etudiants.getString(1);
 				out.println("<tr>");
@@ -42,11 +44,12 @@ public class ListeEtu extends HttpServlet{
 			}
 			out.println("</table>");
 			out.println("<p><a href=\"Accueil\">Retour à l'accueil</a></p>");
-			out.println("<p><a href=\"../index.html\">Se déconnecter</a></p>");
+			out.println("<p><a href=\"LogOut\">Se déconnecter</a></p>");
 			
 		}
 		catch(Exception e){
-			out.println("Erreur co' BDD"+e.getMessage());
+			out.println("<p>Erreur base de données </p>");
+			out.println(e.getMessage());
 		}
 	}
 }

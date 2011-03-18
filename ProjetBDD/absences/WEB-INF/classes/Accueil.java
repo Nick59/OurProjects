@@ -14,7 +14,7 @@ public class Accueil extends HttpServlet{
 		/* Fin de l'en-tête */
 		out.println("<h1> Accueil </h1>");
 		if(req.getParameter("message") != null){
-			out.println("<p>"+req.getParameter("message")+"</p>");
+			out.println("<p class=\"erreur\">"+req.getParameter("message")+"</p>");
 		}
 		String url="jdbc:odbc:absences";
 		String nom="";
@@ -29,29 +29,35 @@ public class Accueil extends HttpServlet{
 			Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
 			Connection con = DriverManager.getConnection(url,nom,mdp);
 			Statement stmt = con.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT * FROM utilisateurs WHERE login='"+logine+"'");
+			//Recherche du role de l'utilisateur
+			ResultSet rs = stmt.executeQuery("SELECT role FROM utilisateurs WHERE login='"+logine+"'");
 			int role=-1;
+			//affectation des variables de session
 			if(rs.next()){
 				role=rs.getInt("role");
 				session.putValue("statut",role);
 			}
 			switch(role){
 				case 0:
+					//cas Etudiant
 					session.putValue("nomEtu",logine);
 					res.sendRedirect("FicheEtu");
 				break;
 					
 				case 1:
+					//cas Secretaire
 					out.println("<p><a href=\"Justification\">Saisir un justificatif</a></p>");
 					out.println("<p><a href=\"ListeEtu\">Voir la liste des etudiants</a></p>");
 				break;
 				
 				case 2:
+					//cas Professeur
 					out.println("<p><a href=\"Saisie\">Saisir une absence</a></p>");
 					out.println("<p><a href=\"ListeEtu\">Voir la liste des etudiants</a></p>");
 				break;
 				
 				default:
+				//cas UFO
 				out.println("<p>Erreur, reconnectez vous ou contactez l'administrateur</p>");
 				break;
 			}
@@ -62,9 +68,10 @@ public class Accueil extends HttpServlet{
 		}
 		catch(Exception e){
 			out.println("<p>Erreur connexion base de données</p>");
+			out.println(e.getMessage());
 		}
 		
-		out.println("<p><a href=\"../index.html\">Se déconnecter</a></p>");
+		out.println("<p><a href=\"LogOut\">Se déconnecter</a></p>");
 		/* Fin du fichier HTML */
 		out.println("</body");
 		out.println("</html>");

@@ -37,6 +37,8 @@ public class FicheEtu extends HttpServlet{
 			ResultSet rsInju = stmtInju.executeQuery("SELECT count(*) FROM absences WHERE etudiant ='"+etu+"' AND justification='non'");
 			Statement stmtAbs = con.createStatement();
 			ResultSet rsAbs = stmtAbs.executeQuery("SELECT * FROM absences WHERE etudiant ='"+etu+"'");
+			Statement stmtMat = con.createStatement();
+			ResultSet rsMat = stmtMat.executeQuery("SELECT matiere FROM absences,cours WHERE id=cours");
 			int nbabsJustifiees=-1;
 			int nbabs=-1;
 			// nombre d'absences
@@ -58,16 +60,20 @@ public class FicheEtu extends HttpServlet{
 				out.println("<tr>");
 				out.println("<th> Date </th>");
 				out.println("<th> Justification </th>");
+				out.println("<th> Matiere </th>");
 				out.println("</tr>");
 				while(rsAbs.next()){
 					out.println("<tr>");
 					// Microsoft Access donnant les dates avec l'heure, on ne garde que la date avec un substring
 					out.println("<td> "+rsAbs.getString("dateAbs").substring(0,10)+"</td>");
 					out.println("<td> "+rsAbs.getString("justification")+"</td>");
+					if(rsMat.next()){
+						out.println("<td> "+rsMat.getString("matiere")+"</td>");
+					}
 					out.println("</tr>");
 				}
 				out.println("</table>");
-				out.println("<a href=\"../index.html\">Se déconnecter</a>");
+				out.println("<p><a href=\"LogOut\">Se déconnecter</a></p>");
 				if(((Integer)session.getAttribute("statut"))>0){
 					out.println("<p><a href=\"Accueil\">Retour à l'accueil</a></p>");
 					out.println("<p><a href=\"ListeEtu\">Retour à la liste</a></p>");
@@ -75,7 +81,8 @@ public class FicheEtu extends HttpServlet{
 			}
 		}
 		catch(Exception e){
-			out.println("Erreur co' BDD"+e.getMessage());
+			out.println("<p>Erreur base de données </p>");
+			out.println(e.getMessage());
 		}
 	}
 }
