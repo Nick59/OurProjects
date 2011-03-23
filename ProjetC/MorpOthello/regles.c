@@ -53,39 +53,76 @@ int changerCouleur(int i, int j, int ivoisin, int jvoisin, char couleur, char ad
             return 0;
         }
 }
-/* Cette fonction retourne 1 si le joueur courant gagne*/
-/* Sinon, les autres nombres correspondent au nombre de pions alignés (2,3,4) */
+/* Cette fonction retourne 1 si le joueur courant gagne, sinon 0,2,3 ou 4 (nombre de pions alignes)*/
 /* i et j sont les coordonnees du dernier coup joue*/
 /* x et y sont des pointeurs vers la fin de l'alignement*/
 int win(int i, int j, int *x, int *y){
+    int alignement=0;
     int ivoisin=0;
     int jvoisin=0;
     char couleur=p.grille[i][j];
+    /* 1ere étape : on cherche le début de la ligne */
     for(ivoisin=-1;ivoisin<2;ivoisin++){
         for(jvoisin=-1;jvoisin<2;jvoisin++){
             if(ivoisin!=0 || jvoisin !=0){
                 if(getCase(i+(1*ivoisin),j+(1*jvoisin))==couleur){
-                    if(getCase(i+(2*ivoisin),j+(2*jvoisin))==couleur){
-                        if(getCase(i+(3*ivoisin),j+(3*jvoisin))==couleur){
-                            if(getCase(i+(4*ivoisin),j+(4*jvoisin))==couleur){
-                                return 1;
+                    i=(i+(1*ivoisin));
+                    j=(j+(1*jvoisin));
+                    if(getCase(i+(1*ivoisin),j+(1*jvoisin))==couleur){
+                        i=(i+(1*ivoisin));
+                        j=(j+(1*jvoisin));
+                        if(getCase(i+(1*ivoisin),j+(1*jvoisin))==couleur){
+                            i=(i+(1*ivoisin));
+                            j=(j+(1*jvoisin));
+                            if(getCase(i+(1*ivoisin),j+(1*jvoisin))==couleur){
+                                i=(i+(1*ivoisin));
+                                j=(j+(1*jvoisin));
                             }
-                            *x=i+(3*ivoisin);
-                            *y=j+(3*ivoisin);
-                            return 4;
                         }
-                        *x=i+(2*ivoisin);
-                        *y=j+(2*ivoisin);
-                        return 3;
                     }
-                    *x=i+(1*ivoisin);
-                    *y=j+(1*ivoisin);
-                    return 2;
                 }
             }
         }
     }
-    return 0;
+
+    alignement=1;
+/* on compte le nombre de pions alignés */
+    for(ivoisin=-1;ivoisin<2;ivoisin++){
+        for(jvoisin=-1;jvoisin<2;jvoisin++){
+            if(ivoisin!=0 || jvoisin !=0){
+                if(getCase(i+(1*ivoisin),j+(1*jvoisin))==couleur){
+                    if(alignement==1) alignement=2;
+                    if(getCase(i+(2*ivoisin),j+(2*jvoisin))==couleur){
+                        if(alignement<=2) alignement=3;
+                        if(getCase(i+(3*ivoisin),j+(3*jvoisin))==couleur){
+                            if(alignement<=3) alignement=4;
+                            if(getCase(i+(4*ivoisin),j+(4*jvoisin))==couleur){
+                                return 1;
+                            }
+                            if((*x)!=-1 && (*y)!=-1 && alignement==4){
+                                (*x)=i+(3*ivoisin);
+                                (*y)=j+(3*jvoisin);
+                            }
+                        }
+                        if((*x)!=-1 && (*y)!=-1 && alignement==3){
+                            (*x)=i+(2*ivoisin);
+                            (*y)=j+(2*ivoisin);
+                        }
+                    }
+                    if((*x)!=-1 && (*y)!=-1 && alignement==2){
+                        (*x)=i+(1*ivoisin);
+                        (*y)=j+(1*ivoisin);
+                    }
+                }
+            }
+        }
+    }
+    if(alignement==1){
+        alignement=0;
+        *x=-1;
+        *y=-1;
+    }
+    return alignement;
 }
 
 /* Cette fonction retourne vrai si les coordonnees ne sont pas dans le plateau */

@@ -32,6 +32,7 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="SDL.dll" />
 		<Unit filename="gestionFichiers.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -68,6 +69,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="reseau.h" />
+		<Unit filename="sdl.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="sdl.h" />
 		<Extensions>
 			<code_completion />
 			<debugger />

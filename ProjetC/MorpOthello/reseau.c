@@ -131,6 +131,35 @@ void playClient(){
     recv(sock,&jo2,sizeof(jo2),0);
 
     /* le jeu commence */
-    partie(0);
+    end = 1
+    while(!end){
+
+    }
+
+}
+
+void actionToDo(int i){
+    switch(i){
+        /*demande de coordonées et envoie vers le serveur*/
+        case 1:
+            int x,y;
+            printf("Saisir la ligne\n");
+            scanf("%d", x);
+            printf("Saisir la colonne\n");
+            scanf("%d", y);
+            fflush(stdin);
+            send(sock,x,sizeof(int),0);
+            send(sock,y,sizeof(int),0);
+            break;
+        /*recuperation du tableau.   */
+        case 2:
+            recv(sock,&p,sizeof(p),0);
+            affichage();
+            break;
+
+        default:
+            printf("paquet non compris \n");
+            break;
+    }
 
 }

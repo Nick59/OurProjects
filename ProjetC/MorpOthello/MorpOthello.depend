@@ -25,41 +25,36 @@
 	<stdio.h>
 	<string.h>
 
-1297870031 source:/home/infoetu/delannon/S4Project/MorpOthello/joueur.c
+1296055602 source:/home/infoetu/delannon/S4Project/MorpOthello/joueur.c
 	"joueur.h"
 	<stdio.h>
-	<stdlib.h>
 	<string.h>
 	"globals.h"
 
-1297865762 /home/infoetu/delannon/S4Project/MorpOthello/joueur.h
+1296051107 /home/infoetu/delannon/S4Project/MorpOthello/joueur.h
 
-1300290396 /home/infoetu/delannon/S4Project/MorpOthello/globals.h
+1296051357 /home/infoetu/delannon/S4Project/MorpOthello/globals.h
 	"regles.h"
 	"joueur.h"
 	"plateau.h"
-	"gestionFichiers.h"
-	"menu.h"
-	"jeu.h"
-	"ia.h"
-	"reseau.h"
 
 1296058634 /home/infoetu/delannon/S4Project/MorpOthello/plateau.h
 
-1299079718 source:/home/infoetu/delannon/S4Project/MorpOthello/main.c
+1296124513 source:/home/infoetu/delannon/S4Project/MorpOthello/main.c
+	<stdio.h>
 	<stdio.h>
 	<string.h>
+	"regles.h"
 	"globals.h"
-	<unistd.h>
 
-1296653311 source:/home/infoetu/delannon/S4Project/MorpOthello/plateau.c
+1296058929 source:/home/infoetu/delannon/S4Project/MorpOthello/plateau.c
 	"plateau.h"
 	<stdio.h>
 	<string.h>
 
-1300281470 /home/infoetu/delannon/S4Project/MorpOthello/regles.h
+1296124018 /home/infoetu/delannon/S4Project/MorpOthello/regles.h
 
-1300281895 source:/home/infoetu/delannon/S4Project/MorpOthello/regles.c
+1296125312 source:/home/infoetu/delannon/S4Project/MorpOthello/regles.c
 	"regles.h"
 	"globals.h"
 	<stdio.h>
@@ -83,7 +78,7 @@
 	"jeu.h"
 	"ia.h"
 
-1300281470 /home/infoetu/sevinl/Bureau/Projet/MorpOthello/regles.h
+1300286559 /home/infoetu/sevinl/Bureau/Projet/MorpOthello/regles.h
 
 1296058634 /home/infoetu/sevinl/Bureau/Projet/MorpOthello/plateau.h
 
@@ -98,7 +93,7 @@
 	<stdio.h>
 	<string.h>
 
-1300281895 source:/home/infoetu/sevinl/Bureau/Projet/MorpOthello/regles.c
+1300292099 source:/home/infoetu/sevinl/Bureau/Projet/MorpOthello/regles.c
 	"regles.h"
 	"globals.h"
 	<stdio.h>
@@ -115,14 +110,14 @@
 
 1297258278 /home/infoetu/sevinl/Bureau/Projet/MorpOthello/menu.h
 
-1299071674 source:/home/infoetu/sevinl/Bureau/Projet/MorpOthello/menu.c
+1300289049 source:/home/infoetu/sevinl/Bureau/Projet/MorpOthello/menu.c
 	<stdio.h>
 	<string.h>
 	"globals.h"
 
 1299680447 /home/infoetu/sevinl/Bureau/Projet/MorpOthello/jeu.h
 
-1300281557 source:/home/infoetu/sevinl/Bureau/Projet/MorpOthello/jeu.c
+1300288892 source:/home/infoetu/sevinl/Bureau/Projet/MorpOthello/jeu.c
 	"globals.h"
 	"jeu.h"
 	<stdio.h>
@@ -138,48 +133,81 @@
 	<netdb.h>
 	"globals.h"
 
-1300283164 source:/home/infoetu/sevinl/Bureau/Projet/MorpOthello/ia.c
+1300291779 source:/home/infoetu/sevinl/Bureau/Projet/MorpOthello/ia.c
 	<stdlib.h>
 	<stdio.h>
 	"globals.h"
 
 1300280644 /home/infoetu/sevinl/Bureau/Projet/MorpOthello/ia.h
 
-1297869806 source:/home/infoetu/delannon/S4Project/MorpOthello/gestionFichiers.c
+1297869806 source:/home/infoetu/sevinl/Bureau/Projet Leo/MorpOthello/gestionFichiers.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"globals.h"
 	<unistd.h>
 
-1297861585 /home/infoetu/delannon/S4Project/MorpOthello/gestionFichiers.h
+1300888933 /home/infoetu/sevinl/Bureau/Projet Leo/MorpOthello/globals.h
+	<SDL.h>
+	"regles.h"
+	"joueur.h"
+	"plateau.h"
+	"gestionFichiers.h"
+	"menu.h"
+	"jeu.h"
+	"ia.h"
+	"sdl.h"
 
-1297258278 /home/infoetu/delannon/S4Project/MorpOthello/menu.h
+1300286559 /home/infoetu/sevinl/Bureau/Projet Leo/MorpOthello/regles.h
 
-1299680447 /home/infoetu/delannon/S4Project/MorpOthello/jeu.h
+1297865762 /home/infoetu/sevinl/Bureau/Projet Leo/MorpOthello/joueur.h
 
-1300280644 /home/infoetu/delannon/S4Project/MorpOthello/ia.h
+1296058634 /home/infoetu/sevinl/Bureau/Projet Leo/MorpOthello/plateau.h
 
-1300286335 /home/infoetu/delannon/S4Project/MorpOthello/reseau.h
+1297861585 /home/infoetu/sevinl/Bureau/Projet Leo/MorpOthello/gestionFichiers.h
 
-1300286052 source:/home/infoetu/delannon/S4Project/MorpOthello/ia.c
+1297258278 /home/infoetu/sevinl/Bureau/Projet Leo/MorpOthello/menu.h
+
+1299680447 /home/infoetu/sevinl/Bureau/Projet Leo/MorpOthello/jeu.h
+
+1300886806 /home/infoetu/sevinl/Bureau/Projet Leo/MorpOthello/ia.h
+
+1300888367 source:/home/infoetu/sevinl/Bureau/Projet Leo/MorpOthello/ia.c
 	<stdlib.h>
 	<stdio.h>
 	"globals.h"
 
-1299071674 source:/home/infoetu/delannon/S4Project/MorpOthello/menu.c
-	<stdio.h>
-	<string.h>
-	"globals.h"
-
-1300291406 source:/home/infoetu/delannon/S4Project/MorpOthello/jeu.c
+1300288892 source:/home/infoetu/sevinl/Bureau/Projet Leo/MorpOthello/jeu.c
 	"globals.h"
 	"jeu.h"
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 
-1300291906 source:/home/infoetu/delannon/S4Project/MorpOthello/reseau.c
+1297870031 source:/home/infoetu/sevinl/Bureau/Projet Leo/MorpOthello/joueur.c
+	"joueur.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"globals.h"
+
+1300889517 source:/home/infoetu/sevinl/Bureau/Projet Leo/MorpOthello/main.c
+	<stdio.h>
+	<string.h>
+	"globals.h"
+	<unistd.h>
+
+1300289049 source:/home/infoetu/sevinl/Bureau/Projet Leo/MorpOthello/menu.c
+	<stdio.h>
+	<string.h>
+	"globals.h"
+
+1296653311 source:/home/infoetu/sevinl/Bureau/Projet Leo/MorpOthello/plateau.c
+	"plateau.h"
+	<stdio.h>
+	<string.h>
+
+1300283583 source:/home/infoetu/sevinl/Bureau/Projet Leo/MorpOthello/reseau.c
 	<sys/types.h>
 	<sys/socket.h>
 	<netinet/in.h>
@@ -187,5 +215,198 @@
 	<unistd.h>
 	<netdb.h>
 	"globals.h"
-	"reseau.h"
+
+1300887421 source:/home/infoetu/sevinl/Bureau/Projet Leo/MorpOthello/regles.c
+	"regles.h"
+	"globals.h"
+	<stdio.h>
+	<stdlib.h>
+
+1276087159 /usr/include/SDL/SDL.h
+	"SDL_main.h"
+	"SDL_stdinc.h"
+	"SDL_audio.h"
+	"SDL_cdrom.h"
+	"SDL_cpuinfo.h"
+	"SDL_endian.h"
+	"SDL_error.h"
+	"SDL_events.h"
+	"SDL_loadso.h"
+	"SDL_mutex.h"
+	"SDL_rwops.h"
+	"SDL_thread.h"
+	"SDL_timer.h"
+	"SDL_video.h"
+	"SDL_version.h"
+	"begin_code.h"
+	"close_code.h"
+
+1276087159 /usr/include/SDL/SDL_main.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+	"begin_code.h"
+	"close_code.h"
+
+1276087159 /usr/include/SDL/SDL_stdinc.h
+	"SDL_config.h"
+	<sys/types.h>
+	<stdio.h>
+	<stdlib.h>
+	<stddef.h>
+	<stdarg.h>
+	<stdlib.h>
+	<malloc.h>
+	<stddef.h>
+	<stdarg.h>
+	<memory.h>
+	<string.h>
+	<strings.h>
+	<inttypes.h>
+	<stdint.h>
+	<ctype.h>
+	<iconv.h>
+	"begin_code.h"
+	<alloca.h>
+	<malloc.h>
+	<malloc.h>
+	<malloc.h>
+	<stdlib.h>
+	"close_code.h"
+
+1276087159 /usr/include/SDL/SDL_config.h
+	"SDL_platform.h"
+	<stdarg.h>
+
+1276087159 /usr/include/SDL/SDL_platform.h
+
+1276087159 /usr/include/SDL/begin_code.h
+
+1276087159 /usr/include/SDL/close_code.h
+
+1276087159 /usr/include/SDL/SDL_audio.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_endian.h"
+	"SDL_mutex.h"
+	"SDL_thread.h"
+	"SDL_rwops.h"
+	"begin_code.h"
+	"close_code.h"
+
+1276087159 /usr/include/SDL/SDL_error.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1276087159 /usr/include/SDL/SDL_endian.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1276087159 /usr/include/SDL/SDL_mutex.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1276087159 /usr/include/SDL/SDL_thread.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_mutex.h"
+	"begin_code.h"
+	<process.h>
+	"close_code.h"
+
+1276087159 /usr/include/SDL/SDL_rwops.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1276087159 /usr/include/SDL/SDL_cdrom.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1276087159 /usr/include/SDL/SDL_cpuinfo.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1276087159 /usr/include/SDL/SDL_events.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_active.h"
+	"SDL_keyboard.h"
+	"SDL_mouse.h"
+	"SDL_joystick.h"
+	"SDL_quit.h"
+	"begin_code.h"
+	"close_code.h"
+
+1276087159 /usr/include/SDL/SDL_active.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1276087159 /usr/include/SDL/SDL_keyboard.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_keysym.h"
+	"begin_code.h"
+	"close_code.h"
+
+1276087159 /usr/include/SDL/SDL_keysym.h
+
+1276087159 /usr/include/SDL/SDL_mouse.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1276087159 /usr/include/SDL/SDL_video.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_rwops.h"
+	"begin_code.h"
+	"close_code.h"
+
+1276087159 /usr/include/SDL/SDL_joystick.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1276087159 /usr/include/SDL/SDL_quit.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+
+1276087159 /usr/include/SDL/SDL_loadso.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1276087159 /usr/include/SDL/SDL_timer.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1276087159 /usr/include/SDL/SDL_version.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1300888967 /home/infoetu/sevinl/Bureau/Projet Leo/MorpOthello/sdl.h
+
+1300890508 source:/home/infoetu/sevinl/Bureau/Projet Leo/MorpOthello/sdl.c
+	<stdlib.h>
+	<stdio.h>
+	<unistd.h>
+	"globals.h"
 

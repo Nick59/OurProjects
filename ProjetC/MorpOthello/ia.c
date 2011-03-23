@@ -18,41 +18,54 @@ void menuIA(){
 /* x et y sont des pointeurs vers les coordonnees de la case choisie par l'ia */
 
 /* l'ia la moins intelligente, se contente de jouer au hasard */
-void IAdecouverte(int *x, int *y){
+void IAfacile(int *x, int *y){
     *x=rand_a_b(0,9);
     *y=rand_a_b(0,14);
 }
 
 /* l'ia normale est défensive, i et j sont des pointeurs des coordonnees de la case choisie par le joueur*/
 /* l'ia essaye juste de gener */
-void IA(int *x, int *y, int *i, int *j){
+void IAmoyen(int *x, int *y, int *i, int *j){
     generAUn(x,y,i,j);
 }
 
 void IADifficile(int *x,int *y, int *i, int *j){
-    /* si pions du joueur alignés, anticipation...*/
-    if(win(*i,*j,*x,*y)!=0){
+    // si pions du joueur alignés, anticipation...
+    *x=0;
+    *y=0;
+    int winner=win(*i,*j,x,y);
+    if(winner==0){
         generAUn(x,y,i,j);
     }
     else{
-        /*alignement vertical : on bloque la colonne*/
+        printf("Case de Leo : %d %d. Case ou l'alignement se termine : %d %d",*i,*j,*x,*y);
+        // alignement vertical : on bloque la colonne
         if(*i==*x){
             (*y)+=3;
+            if(!coupValide(*x,*y))(*y)-=6;
         }
-        /* aligment horizontal : on bloque la ligne*/
-        else if(*j==*y){
-            (*x)+=3;
-        }
-        /*aligment en diagonale... on bloque la diagonale*/
         else{
-            (*x)+=3;
-            (*y)+=3;
+            // aligment horizontal : on bloque la ligne
+            if(*j==*y){
+                (*x)+=3;
+                if(!coupValide(*x,*y))(*x)-=6;
+            }
+            // aligment en diagonale... on bloque la diagonale
+            else{
+                (*x)+=3;
+                (*y)+=3;
+                if(!coupValide(*x,*y)){
+                    (*y)-=6;
+                    (*x)-=6;
+                }
+            }
         }
     }
+    printf(" . Hm. Je vais donc jouer en %d %d :D \n",*x,*y);
 }
 
 /* Cette fonction retourne un nombre aléatoire entre a et b */
-/* On suppose a<b*/
+// On suppose a<b
 int rand_a_b(int a, int b){
     srand(rand()*time(NULL));
     return rand()%(b-a) +a;
@@ -85,25 +98,21 @@ void jouerContreIA(int difficulte){
     affectJoueur(jo1);
     int isWinner = 0;
     int auJoueur = 1;
-    int x=-1;
-    int y=-1;
-    int *i,*j;
-    i=malloc(sizeof(int));
-    j=malloc(sizeof(int));
-    *i=0;
-    *j=0;
+    int i,j,x,y,a,b;
+    i=j=x=y=0;
+    a=b=-1;
     initPlateau();
-    while(!isWinner){
-        /* au joueur de jouer*/
+    while(!(isWinner==1)){
+        // au joueur de jouer
         if(auJoueur){
             affichage();
             auJoueur--;
-            isWinner=saisie(i,j);
+            isWinner=saisie(&i,&j);
             if(isWinner){
                 printf("Félicitations vous avez vaincu l'ordinateur !\n");
             }
         }
-        /* a l'ordi de jouer*/
+        // a l'ordi de jouer
         else{
             auJoueur++;
             switch(difficulte){
@@ -111,12 +120,12 @@ void jouerContreIA(int difficulte){
                     x=-1;
                     y=-1;
                     while(!coupValide(x,y)){
-                        IAdecouverte(&x,&y);
+                        IAfacile(&x,&y);
                     }
                     if(coupValide(x,y)){
                         affect(x,y,'N');
                         convertir(x,y);
-                        isWinner=(win(x,y,NULL,NULL)==1);
+                        isWinner=win(x,y,&a,&b);
                     }
                     break;
 
@@ -125,12 +134,12 @@ void jouerContreIA(int difficulte){
                     x=-1;
                     y=-1;
                     while(!coupValide(x,y)){;
-                        IA(&x,&y,i,j);
+                        IAmoyen(&x,&y,&i,&j);
                     }
                     if(coupValide(x,y)){
                         affect(x,y,'N');
                         convertir(x,y);
-                        isWinner=(win(x,y,NULL,NULL)==1);
+                        isWinner=win(x,y,&a,&b);
                     }
                 break;
 
@@ -138,28 +147,28 @@ void jouerContreIA(int difficulte){
                     printf("L'ordinateur choisit son coup...\n");
                     x=-1;
                     y=-1;
-                    int *a,*b;
                     while(!coupValide(x,y)){
-                        IADifficile(&x,&y,i,j);
+                        IADifficile(&x,&y,&i,&j);
                     }
                     if(coupValide(x,y)){
                         affect(x,y,'N');
                         convertir(x,y);
-                        isWinner=(win(x,y,NULL,NULL)==1);
+                        isWinner=win(x,y,&a,&b);
                     }
+                    break;
 
                 default:
                 printf("Erreur inconnue\n");
                 break;
             }
-            if(isWinner){
+            if(isWinner==1){
                 printf("Désolé, l'ordinateur est plus fort que vous !\n");
             }
         }
     }
 }
 
-/* renvoie aléatoirement une case à 3 cases de distance de la case (*i,*j)*/
+// renvoie aléatoirement une case à 3 cases de distance de la case (*i,*j)
 void generAUn(int *x,int *y, int *i, int *j){
     *x=rand_a_b(0,10000);
     *y=rand_a_b(0,10000);

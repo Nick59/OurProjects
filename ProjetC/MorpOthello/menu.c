@@ -5,7 +5,7 @@
 void afficherMenu(){
     printf("=================================================\n");
     printf("===================MorpOthello===================\n");
-    printf("=========\"Ce jeu est une révolution !\"===========\n");
+    printf("====Tout le fun du Morpion et de l'Othello !=====\n");
     printf("=================================================\n\n");
     printf("Veuillez choisir une option dans le menu\n");
     printf("1 - Jouer contre l'ordinateur\n");
