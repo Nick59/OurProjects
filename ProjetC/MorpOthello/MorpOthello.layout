@@ -2,13 +2,13 @@
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Debug" />
 	<File name="gestionFichiers.c" open="1" top="0" tabpos="6">
-		<Cursor position="1336" topLine="37" />
+		<Cursor position="393" topLine="1" />
 	</File>
 	<File name="gestionFichiers.h" open="1" top="0" tabpos="7">
 		<Cursor position="105" topLine="0" />
 	</File>
 	<File name="globals.h" open="1" top="0" tabpos="15">
-		<Cursor position="185" topLine="0" />
+		<Cursor position="205" topLine="0" />
 	</File>
 	<File name="ia.c" open="1" top="0" tabpos="11">
 		<Cursor position="1428" topLine="36" />
@@ -17,7 +17,7 @@
 		<Cursor position="83" topLine="0" />
 	</File>
 	<File name="jeu.c" open="1" top="0" tabpos="10">
-		<Cursor position="4854" topLine="12" />
+		<Cursor position="2878" topLine="105" />
 	</File>
 	<File name="jeu.h" open="0" top="0" tabpos="13">
 		<Cursor position="192" topLine="0" />
@@ -29,7 +29,7 @@
 		<Cursor position="16" topLine="0" />
 	</File>
 	<File name="main.c" open="1" top="0" tabpos="1">
-		<Cursor position="313" topLine="0" />
+		<Cursor position="325" topLine="0" />
 	</File>
 	<File name="menu.c" open="1" top="0" tabpos="8">
 		<Cursor position="702" topLine="1" />
@@ -44,21 +44,21 @@
 		<Cursor position="250" topLine="0" />
 	</File>
 	<File name="regles.c" open="1" top="0" tabpos="4">
-		<Cursor position="2802" topLine="0" />
+		<Cursor position="2802" topLine="54" />
 	</File>
 	<File name="regles.h" open="1" top="0" tabpos="5">
 		<Cursor position="34" topLine="0" />
 	</File>
-	<File name="reseau.c" open="0" top="0" tabpos="13">
-		<Cursor position="3508" topLine="0" />
+	<File name="reseau.c" open="1" top="1" tabpos="16">
+		<Cursor position="3416" topLine="150" />
 	</File>
 	<File name="reseau.h" open="0" top="0" tabpos="15">
 		<Cursor position="0" topLine="0" />
 	</File>
-	<File name="sdl.c" open="1" top="1" tabpos="13">
-		<Cursor position="806" topLine="10" />
+	<File name="sdl.c" open="1" top="0" tabpos="13">
+		<Cursor position="2247" topLine="60" />
 	</File>
 	<File name="sdl.h" open="1" top="0" tabpos="14">
-		<Cursor position="48" topLine="0" />
+		<Cursor position="110" topLine="0" />
 	</File>
 </CodeBlocks_layout_file>

@@ -12,9 +12,7 @@
 typedef struct sockaddr_in SOCKADDR_IN;
 typedef struct sockaddr SOCKADDR;
 typedef struct in_addr IN_ADDR;
-int typegame = 0;
-SOCKET csock;
-SOCKET sock;
+
 
 
 /* Ceci est la partie serveur */
@@ -33,7 +31,7 @@ void serverSide(){
 
     /* SERVEUR */
     /*creer une stocket mode tpc ip */
-    sock = socket (AF_INET, SOCK_STREAM, 0);
+    SOCKET sock = socket (AF_INET, SOCK_STREAM, 0);
 
     /*on assigne le port d'ecoute*/
     sin.sin_addr.s_addr = htonl(INADDR_ANY);
@@ -44,10 +42,10 @@ void serverSide(){
     bind(sock, (SOCKADDR*)&sin, sizeof(sin));
 
     /*etat d'ecoute*/
-    listen(sock, 5);
+    listen(sock, 15);
 
     /*acceptation des clients*/
-     csock = accept(sock, (SOCKADDR*)&csin, &crecsize);
+     SOCKET csock = accept(sock, (SOCKADDR*)&csin, &crecsize);
      printf("Un client s'est connecté !\n");
 
     playServer(csock);
@@ -89,7 +87,6 @@ void clientSide(){
 }
 
 void playServer(SOCKET csock){
-    typegame = 2;
     char j1[256];
     char j2[256];
     printf("Bienvenue, joueur 1 entrez votre nom\n");
@@ -112,11 +109,50 @@ void playServer(SOCKET csock){
     printf("Fin d'envoie des données.\n");
 
     /* Le jeu commence */
-    partie(0);
+    int iswinner = 0;
+    int x,y;
+    int type;
+    while(!iswinner){
+        /*Joueur 1 joue*/
+        printf("Joueur %s, A vous !\n",jo1.name);
+        saisieServer();
+
+        /*Syncro plateau*/
+        type = 2;
+        send(csock,&type,sizeof(type),0);
+        recv(csock,&type,sizeof(type),0);
+        send(csock,&p,sizeof(p),0);
+        /* Demande de coord */
+        int end =0;
+        while(!end){
+            printf("%s Joue....\n",jo2.name);
+            type = 1;
+            send(csock,&type,sizeof(type),0);
+            recv(csock,&type,sizeof(type),0);
+            recv(csock,&x,sizeof(x),0);
+            recv(csock,&y,sizeof(y),0);
+            affect(x,y,jo2.couleur);
+            end = 1;
+            /*if(coupValide(x,y)){
+                affect(x,y,joueurCourant.couleur);
+                convertir(x,y);
+                end = 1;
+            }*/
+        }
+
+        affichage();
+
+        /*Syncro plateau */
+        type = 2;
+        send(csock,&type,sizeof(type),0);
+        recv(csock,&type,sizeof(type),0);
+        send(csock,&p,sizeof(p),0);
+
+    }
 }
 
-void playClient(){
-    typegame = 1;
+void playClient(SOCKET sock){
+    int type = 0;
     char buffer[256];
     char j2[256];
     printf("Le joueur 1 saisie sont nom.. Wait please\n");
@@ -131,35 +167,83 @@ void playClient(){
     recv(sock,&jo2,sizeof(jo2),0);
 
     /* le jeu commence */
-    end = 1
+    int end = 0;
+    int winner = 0;
     while(!end){
+        printf("Le %s joue...\n", jo1.name);
+        recv(sock,&type,sizeof(type),0);
+        if((winner = actionToDo(type,sock)) != 0){
+            end = 1;
+        }
 
+    }
+    if(winner == 1){
+        printf("%s a gagné la partie !!! Félicitations !!!\n",jo1.name);
+    }else{
+        printf("%s a gagné la partie !!! Félicitations !!!\n",jo2.name);
     }
 
 }
 
-void actionToDo(int i){
+int actionToDo(int i,SOCKET sock){
+    int tmp =-1;
+    int x,y;
+    int winner = 0;
     switch(i){
         /*demande de coordonées et envoie vers le serveur*/
         case 1:
-            int x,y;
-            printf("Saisir la ligne\n");
-            scanf("%d", x);
-            printf("Saisir la colonne\n");
-            scanf("%d", y);
-            fflush(stdin);
-            send(sock,x,sizeof(int),0);
-            send(sock,y,sizeof(int),0);
+            printf("%s A Vous !\n",jo2.name);
+            printf("Saisissez la ligne\n");
+            scanf("%d", &x);
+            printf("Saisissez la colonne\n");
+            scanf("%d", &y);
+            /*fflush(stdin);*/
+            send(sock,&tmp,sizeof(tmp),0);
+            send(sock,&x,sizeof(x),0);
+            send(sock,&y,sizeof(y),0);
+            return 0;
             break;
         /*recuperation du tableau.   */
         case 2:
+            printf("Recuperation du tableau\n");
+            send(sock,&tmp,sizeof(tmp),0);
             recv(sock,&p,sizeof(p),0);
             affichage();
+            return 0;
+            break;
+
+        /* Un gagnant */
+        case 3:
+            recv(sock,winner,sizeof(winner),0);
+            return winner;
             break;
 
         default:
-            printf("paquet non compris \n");
+            printf("paquet non compris %d \n",i);
+            return 3;
             break;
     }
 
+}
+
+void saisieServer(){
+    int x,y;
+    int end = 0;
+    while(!end){
+        printf("Saisir la ligne\n");
+        scanf("%d", &x);
+        printf("Saisir la colonne\n");
+        scanf("%d", &y);
+        affect(x,y,jo1.couleur);
+        end = 1;
+        /*fflush(stdin);
+        if(coupValide(x,y)){
+
+            convertir(x,y);
+            end = 1;
+        }else{
+            printf("Coordonnées Fausses\n");
+        }*/
+        affichage();
+    }
 }
