@@ -1,30 +1,41 @@
 body{
-	background-color:rgb(163,185,199);
+    background-color:#032b47;
+    background-repeat: repeat-x;
+
+}
+
+#contenu{
+    background-color: #1678B9;
+    background-image: url("connexion.jpg");
+    background-repeat: no-repeat;
+    width: 320px;
+    margin-top:-5px;
+    
+ 
 }
 
 form{
-	margin:10px;
-	padding:10px;
-	border:dashed black 1px;
-	text-align:center;
-}
+   color: #FFFFFF;
+   font-size: 15px;
+   padding : 10px;
+   width: 250px;
 
 h1{
-	color:rgb(175,0,0);
+
 }
 
 a:visited,a{
-	color:black;
-	text-decoration:underlined;
+    color:black;
+    text-decoration:underlined;
 }
 
 a:hover{
-	color:yellow;
-	font-size:125%;
+    color:yellow;
+    font-size:125%;
 }
 
 p{
-	text-align:center;
+    text-align:center;
 }
 
 table{
