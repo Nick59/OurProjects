@@ -29,7 +29,7 @@
 		<Cursor position="16" topLine="0" />
 	</File>
 	<File name="main.c" open="1" top="0" tabpos="1">
-		<Cursor position="325" topLine="0" />
+		<Cursor position="313" topLine="0" />
 	</File>
 	<File name="menu.c" open="1" top="0" tabpos="8">
 		<Cursor position="702" topLine="1" />
@@ -50,13 +50,13 @@
 		<Cursor position="34" topLine="0" />
 	</File>
 	<File name="reseau.c" open="1" top="1" tabpos="16">
-		<Cursor position="3416" topLine="150" />
+		<Cursor position="6239" topLine="231" />
 	</File>
 	<File name="reseau.h" open="0" top="0" tabpos="15">
 		<Cursor position="0" topLine="0" />
 	</File>
 	<File name="sdl.c" open="1" top="0" tabpos="13">
-		<Cursor position="2247" topLine="60" />
+		<Cursor position="2245" topLine="60" />
 	</File>
 	<File name="sdl.h" open="1" top="0" tabpos="14">
 		<Cursor position="110" topLine="0" />

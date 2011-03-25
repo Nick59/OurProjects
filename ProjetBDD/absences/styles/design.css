@@ -1,7 +1,9 @@
 body{
-    background-color:#032b47;
+    background-color:rgb(0,169,224);
     background-repeat: repeat-x;
-
+	text-align : center;
+	border-style: solid;
+	border-color:white;
 }
 
 #contenu{
@@ -13,6 +15,9 @@ body{
     
  
 }
+label {
+	font-size:125%;
+}
 
 form{
    color: #FFFFFF;
@@ -20,8 +25,10 @@ form{
    padding : 10px;
    width: 250px;
 
+}
 h1{
-
+	color: white;
+	text-decoration: underline;
 }
 
 a:visited,a{
@@ -34,15 +41,23 @@ a:hover{
     font-size:125%;
 }
 
+.erreur{
+	color:rgb(139,12,12);
+	font-size:150%;
+}
 p{
     text-align:center;
 }
 
 table{
+	background-color:rgb(81,211,255);
    border-collapse: collapse;
+   text-align:center;
+
 }
 
 
 tr,td,th{
-	border:solid 1px black;
+	border:solid 3px white;
+	
 }

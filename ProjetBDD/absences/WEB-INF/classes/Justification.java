@@ -27,13 +27,13 @@ public class Justification extends HttpServlet{
 			res.sendRedirect("../index.html");
 		}
 		//Formulaire de Justification
-		out.println("<form method=\"post\" action=\"JustiPost\">");
+		out.println("<center><form method=\"post\" action=\"JustiPost\">");
 		out.println("<p><label> Etudiant : </label><input type=\"text\" name=\"login\" /></p>");
 		out.println("<p><label> Justification : </label><input type=\"text\" name=\"justificatif\" /></p>");
 		out.println("<p><label> Date début : (JJ/MM/AAAA)</label><input type=\"text\" name=\"d1\" /></p>");
 		out.println("<p><label> Date fin : (JJ/MM/AAAA)</label><input type=\"text\" name=\"d2\" /></p>");
 		out.println("<p><input type=\"submit\" value=\"Justifier l'absence\"/>");
-		out.println("</form>");
+		out.println("</form></center>");
 		
 		
 		

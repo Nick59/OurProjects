@@ -34,7 +34,7 @@ public class Login extends HttpServlet{
 				}
 				
 			}
-			out.println("<p> Login/Mot de passe incorrect(s) !! </p>");
+			out.println("<p class=\"erreur\"> Login/Mot de passe incorrect(s) !! </p>");
 			out.println("<a href=\"../index.html\">Retour</a>");
 			
 			// fermeture des espaces
@@ -47,7 +47,7 @@ public class Login extends HttpServlet{
 		
 		
 		/* Fin du fichier HTML */
-		out.println("</body");
+		out.println("</body>");
 		out.println("</html>");
 	}
 
