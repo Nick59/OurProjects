@@ -38,7 +38,6 @@ void IADifficile(int *x,int *y, int *i, int *j){
         generAUn(x,y,i,j);
     }
     else{
-        printf("Case de Leo : %d %d. Case ou l'alignement se termine : %d %d",*i,*j,*x,*y);
         // alignement vertical : on bloque la colonne
         if(*i==*x){
             (*y)+=3;
@@ -61,7 +60,6 @@ void IADifficile(int *x,int *y, int *i, int *j){
             }
         }
     }
-    printf(" . Hm. Je vais donc jouer en %d %d :D \n",*x,*y);
 }
 
 /* Cette fonction retourne un nombre aléatoire entre a et b */
@@ -101,13 +99,20 @@ void jouerContreIA(int difficulte){
     int i,j,x,y,a,b;
     i=j=x=y=0;
     a=b=-1;
+    renduGraphique();
     initPlateau();
+    dessinePlateau(10,15);
     while(!(isWinner==1)){
         // au joueur de jouer
         if(auJoueur){
             affichage();
+            dessinePlateau(10,15);
             auJoueur--;
-            isWinner=saisie(&i,&j);
+            isWinner=SaisieGraphique(&i,&j);
+            if(isWinner==-1){
+                printf("Partie annulee !\n");
+                return;
+            }
             if(isWinner){
                 printf("Félicitations vous avez vaincu l'ordinateur !\n");
             }
@@ -166,6 +171,7 @@ void jouerContreIA(int difficulte){
             }
         }
     }
+    SDL_Quit();
 }
 
 // renvoie aléatoirement une case à 3 cases de distance de la case (*i,*j)

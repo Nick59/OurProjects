@@ -7,13 +7,7 @@
 int main(int argc, char ** argv)
 {
     while(1){
-        int pid=fork();
-        if(pid==0){
-            renduGraphique();
-        }
-        else{
-            lancerMenu();
-        }
+        lancerMenu();
     }
     return 0;
 }

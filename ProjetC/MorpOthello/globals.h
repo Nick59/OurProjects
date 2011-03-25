@@ -22,5 +22,6 @@ extern Joueur jo1;
 extern Joueur jo2;
 extern Joueur joueurCourant;
 extern Plateau p;
+extern SDL_Surface *ecranJeu;
 
 #endif

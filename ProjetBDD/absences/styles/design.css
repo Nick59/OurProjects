@@ -51,13 +51,12 @@ p{
 
 table{
 	background-color:rgb(81,211,255);
-   border-collapse: collapse;
-   text-align:center;
-
+	border-collapse: collapse;
+	text-align:center;
+	margin-left:40%;
 }
 
 
 tr,td,th{
 	border:solid 3px white;
-	
 }

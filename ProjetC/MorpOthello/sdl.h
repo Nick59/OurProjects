@@ -1,8 +1,9 @@
-#ifndef GRAPH_H
-#define GRAPH_H
+#ifndef SDL_H
+#define SDL_H
+#include <SDL.h>
 
-void pauseEcran();
-void dessinePlateau(int i, int j, SDL_Surface *ecran);
+void dessinePlateau(int i, int j);
 int renduGraphique();
+int SaisieGraphique(int *x, int *y);
 
 #endif

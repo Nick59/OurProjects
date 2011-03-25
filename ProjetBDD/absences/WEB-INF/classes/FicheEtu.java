@@ -81,7 +81,7 @@ public class FicheEtu extends HttpServlet{
 			}
 		}
 		catch(Exception e){
-			out.println("<p>Erreur base de données </p>");
+			out.println("<p class=\"erreur\">Erreur base de données </p>");
 			out.println(e.getMessage());
 		}
 	}

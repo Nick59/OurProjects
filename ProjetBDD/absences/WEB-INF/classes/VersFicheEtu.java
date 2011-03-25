@@ -31,7 +31,7 @@ public class VersFicheEtu extends HttpServlet{
 			res.sendRedirect("FicheEtu");
 		}
 		catch(Exception e){
-			out.println("<p>Erreur base de données </p>");
+			out.println("<p class=\"erreur\">Erreur base de données </p>");
 			out.println(e.getMessage());
 		}
 	}

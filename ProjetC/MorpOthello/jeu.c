@@ -1,8 +1,8 @@
-#include "globals.h"
-#include "jeu.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "globals.h"
+#include "jeu.h"
 
 /*Affectation de joueur joueurCourant = b*/
 void affectJoueur(Joueur b){
@@ -46,26 +46,37 @@ void switchJoueur(){
 }
 
 /* Cette fonction représente une manche, elle renvoie 1 si le joueur 1 gagne, sinon 2 */
+/* 0 pour quitter la partie */
 int manche(){
     int *x=malloc(sizeof(int));
     int *y=malloc(sizeof(int));
     *x=0;
     *y=0;
     int isWinner = 0;
+    renduGraphique();
     initPlateau();
+    dessinePlateau(10,15);
     while(!isWinner){
         switchJoueur();
         printf("Joueur %s, A vous !\n",joueurCourant.name);
-        isWinner=saisie(x,y);
+        isWinner=SaisieGraphique(x,y);
+        if(isWinner==-1){
+            printf("Partie annulee !\n");
+            SDL_Quit();
+            return -1;
+        }
         affichage();
+        dessinePlateau(10,15);
     }
     printf("%s a gagné la manche ;)\n",joueurCourant.name);
     if(strcmp(joueurCourant.name,jo1.name)==0){
         jo1.score++;
+        SDL_Quit();
         return 1;
     }
     else{
         jo2.score++;
+        SDL_Quit();
         return 2;
     }
 }
@@ -100,7 +111,9 @@ Joueur partie(int tournoi){
         numManche++;
         afficherPoints();
         printf("Manche %d !\n",numManche);
-        manche();
+        if(manche()==-1){
+            return;
+        }
         if(jo1.score!=2 && jo2.score!=2 && !tournoi){
             printf("Continuer ? (oui/non)\n");
             scanf("%s",&choix);

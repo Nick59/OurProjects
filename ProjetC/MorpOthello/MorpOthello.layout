@@ -2,37 +2,37 @@
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Debug" />
 	<File name="gestionFichiers.c" open="1" top="0" tabpos="6">
-		<Cursor position="393" topLine="1" />
+		<Cursor position="1336" topLine="37" />
 	</File>
 	<File name="gestionFichiers.h" open="1" top="0" tabpos="7">
 		<Cursor position="105" topLine="0" />
 	</File>
 	<File name="globals.h" open="1" top="0" tabpos="15">
-		<Cursor position="205" topLine="0" />
+		<Cursor position="474" topLine="0" />
 	</File>
-	<File name="ia.c" open="1" top="0" tabpos="11">
-		<Cursor position="1428" topLine="36" />
+	<File name="ia.c" open="1" top="1" tabpos="11">
+		<Cursor position="4918" topLine="0" />
 	</File>
 	<File name="ia.h" open="1" top="0" tabpos="12">
 		<Cursor position="83" topLine="0" />
 	</File>
 	<File name="jeu.c" open="1" top="0" tabpos="10">
-		<Cursor position="2878" topLine="105" />
+		<Cursor position="1304" topLine="48" />
 	</File>
 	<File name="jeu.h" open="0" top="0" tabpos="13">
 		<Cursor position="192" topLine="0" />
 	</File>
 	<File name="joueur.c" open="1" top="0" tabpos="3">
-		<Cursor position="630" topLine="5" />
+		<Cursor position="630" topLine="0" />
 	</File>
 	<File name="joueur.h" open="1" top="0" tabpos="2">
 		<Cursor position="16" topLine="0" />
 	</File>
 	<File name="main.c" open="1" top="0" tabpos="1">
-		<Cursor position="313" topLine="0" />
+		<Cursor position="163" topLine="0" />
 	</File>
 	<File name="menu.c" open="1" top="0" tabpos="8">
-		<Cursor position="702" topLine="1" />
+		<Cursor position="702" topLine="0" />
 	</File>
 	<File name="menu.h" open="1" top="0" tabpos="9">
 		<Cursor position="72" topLine="0" />
@@ -44,21 +44,21 @@
 		<Cursor position="250" topLine="0" />
 	</File>
 	<File name="regles.c" open="1" top="0" tabpos="4">
-		<Cursor position="2802" topLine="54" />
+		<Cursor position="2802" topLine="119" />
 	</File>
 	<File name="regles.h" open="1" top="0" tabpos="5">
 		<Cursor position="34" topLine="0" />
 	</File>
-	<File name="reseau.c" open="1" top="1" tabpos="16">
-		<Cursor position="6239" topLine="231" />
+	<File name="reseau.c" open="1" top="0" tabpos="16">
+		<Cursor position="3764" topLine="133" />
 	</File>
 	<File name="reseau.h" open="0" top="0" tabpos="15">
 		<Cursor position="0" topLine="0" />
 	</File>
 	<File name="sdl.c" open="1" top="0" tabpos="13">
-		<Cursor position="2245" topLine="60" />
+		<Cursor position="582" topLine="3" />
 	</File>
 	<File name="sdl.h" open="1" top="0" tabpos="14">
-		<Cursor position="110" topLine="0" />
+		<Cursor position="100" topLine="0" />
 	</File>
 </CodeBlocks_layout_file>

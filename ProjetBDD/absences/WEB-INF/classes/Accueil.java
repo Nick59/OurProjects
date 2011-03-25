@@ -67,7 +67,7 @@ public class Accueil extends HttpServlet{
 			con.close();
 		}
 		catch(Exception e){
-			out.println("<p>Erreur connexion base de données</p>");
+			out.println("<p class=\"erreur\">Erreur connexion base de données</p>");
 			out.println(e.getMessage());
 		}
 		

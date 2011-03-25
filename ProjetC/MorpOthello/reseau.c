@@ -110,12 +110,54 @@ void playServer(SOCKET csock){
 
     /* Le jeu commence */
     int iswinner = 0;
-    int x,y;
+    int winnerServer;
+    int x,y, a,b;
     int type;
+    a=b=-1;
     while(!iswinner){
+         int end2 =0;
         /*Joueur 1 joue*/
         printf("Joueur %s, A vous !\n",jo1.name);
-        saisieServer();
+        int type = 0;
+        int x,y,a,b;
+        a=b=-1;
+        int end = 0;
+        while(!end){
+            printf("Saisir la ligne\n");
+            scanf("%d", &x);
+            printf("Saisir la colonne\n");
+            scanf("%d", &y);
+            if(coupValide(x,y)){
+                printf("Coup Valide !\n");
+                affect(x,y,jo1.couleur);
+                convertir(x,y);
+                end = 1;
+            }else{
+                printf("Coordonnées Fausses\n");
+            }
+            affichage();
+        }
+        if(win(x,y,&a,&b)==1){
+            if(getCase(x,y)=='B'){
+                type = 3;
+                send(csock,&type,sizeof(type),0);
+                recv(csock,&type,sizeof(type),0);
+                type ='B';
+                winnerServer = 'B';
+                send(csock,&type,sizeof(type),0);
+                iswinner = 1;
+                end2 = 1;
+            }else if(getCase(x,y)=='N'){
+                type = 3;
+                send(csock,&type,sizeof(type),0);
+                recv(csock,&type,sizeof(type),0);
+                type ='N';
+                winnerServer = 'N';
+                send(csock,&type,sizeof(type),0);
+                iswinner = 1;
+                end2 =1;
+            }
+        }
 
         /*Syncro plateau*/
         type = 2;
@@ -123,25 +165,44 @@ void playServer(SOCKET csock){
         recv(csock,&type,sizeof(type),0);
         send(csock,&p,sizeof(p),0);
         /* Demande de coord */
-        int end =0;
-        while(!end){
+        while(!end2){
             printf("%s Joue....\n",jo2.name);
             type = 1;
             send(csock,&type,sizeof(type),0);
             recv(csock,&type,sizeof(type),0);
             recv(csock,&x,sizeof(x),0);
             recv(csock,&y,sizeof(y),0);
-            affect(x,y,jo2.couleur);
-            end = 1;
-            /*if(coupValide(x,y)){
-                affect(x,y,joueurCourant.couleur);
+            if(coupValide(x,y)){
+                affect(x,y,jo2.couleur);
                 convertir(x,y);
-                end = 1;
-            }*/
+                end2 = 1;
+            }
+        }
+        if(!iswinner){
+            if(win(x,y,&a,&b)==1){
+                if(getCase(x,y)=='B'){
+                    type = 3;
+                    send(csock,&type,sizeof(type),0);
+                    recv(csock,&type,sizeof(type),0);
+                    type ='B';
+                    winnerServer = 'B';
+                    send(csock,&type,sizeof(type),0);
+                    iswinner = 1;
+                }else if(getCase(x,y)=='N'){
+                    type = 3;
+                    send(csock,&type,sizeof(type),0);
+                    recv(csock,&type,sizeof(type),0);
+                    type ='N';
+                    winnerServer = 'N';
+                    send(csock,&type,sizeof(type),0);
+                    iswinner =1;
+                }
+            }
         }
 
-        affichage();
-
+        if(!iswinner){
+            affichage();
+        }
         /*Syncro plateau */
         type = 2;
         send(csock,&type,sizeof(type),0);
@@ -149,6 +210,17 @@ void playServer(SOCKET csock){
         send(csock,&p,sizeof(p),0);
 
     }
+    /* quite le jeu */
+    type = 4;
+    send(csock,&type,sizeof(type),0);
+
+    if(winnerServer == jo1.couleur){
+        printf("%s a gagné la partie !!! Félicitations !!!\n",jo1.name);
+    }else{
+        printf("%s a gagné la partie !!! Félicitations !!!\n",jo2.name);
+    }
+
+
 }
 
 void playClient(SOCKET sock){
@@ -169,14 +241,19 @@ void playClient(SOCKET sock){
     /* le jeu commence */
     int end = 0;
     int winner = 0;
-    while(!end){
-        printf("Le %s joue...\n", jo1.name);
+    while(end <2){
+        if(end != 0){
+            printf("En Attente du plateau\n");
+        }else{
+            printf("Le %s joue...\n", jo1.name);
+        }
         recv(sock,&type,sizeof(type),0);
         if((winner = actionToDo(type,sock)) != 0){
-            end = 1;
+            end += 1;
         }
 
     }
+
     if(winner == 1){
         printf("%s a gagné la partie !!! Félicitations !!!\n",jo1.name);
     }else{
@@ -186,9 +263,9 @@ void playClient(SOCKET sock){
 }
 
 int actionToDo(int i,SOCKET sock){
+    char winner = ' ';
     int tmp =-1;
     int x,y;
-    int winner = 0;
     switch(i){
         /*demande de coordonées et envoie vers le serveur*/
         case 1:
@@ -214,9 +291,20 @@ int actionToDo(int i,SOCKET sock){
 
         /* Un gagnant */
         case 3:
-            recv(sock,winner,sizeof(winner),0);
-            return winner;
+            printf("Gagné !\n");
+            send(sock,&tmp,sizeof(tmp),0);
+            recv(sock,&winner,sizeof(winner),0);
+
+            if(jo1.couleur==winner){
+                return 1;
+            }else if(jo2.couleur==winner){
+                return 2;
+            }
             break;
+
+        /*arret du client */
+        case 4:
+            return 1;
 
         default:
             printf("paquet non compris %d \n",i);
@@ -226,24 +314,3 @@ int actionToDo(int i,SOCKET sock){
 
 }
 
-void saisieServer(){
-    int x,y;
-    int end = 0;
-    while(!end){
-        printf("Saisir la ligne\n");
-        scanf("%d", &x);
-        printf("Saisir la colonne\n");
-        scanf("%d", &y);
-        affect(x,y,jo1.couleur);
-        end = 1;
-        /*fflush(stdin);
-        if(coupValide(x,y)){
-
-            convertir(x,y);
-            end = 1;
-        }else{
-            printf("Coordonnées Fausses\n");
-        }*/
-        affichage();
-    }
-}

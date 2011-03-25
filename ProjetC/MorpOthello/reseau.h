@@ -6,6 +6,7 @@ void serverSide();
 void clientSide();
 void playClient();
 void playServer();
+int actionToDo(int i,SOCKET sock);
 
 
 #endif
